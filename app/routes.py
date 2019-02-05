@@ -1,9 +1,8 @@
 from app import app,db
 from flask import render_template,flash,redirect,url_for,request
 from app.forms import LoginForm
-from flask_login import current_user, login_user,logout_user
+from flask_login import current_user, login_user,logout_user,login_required
 from app.models import User
-
 from app.forms import RegistrationForm
 
 @app.route("/")
@@ -14,14 +13,13 @@ def index():
     user={'username':'Daniel'}
     posts = [{
         'author': {'username': 'John'},
-        'body': 'Beautiful day in Portland!'
-        },
-        {
+        'body': 'Beautiful day in Portland!'},{
         'author': {'username': 'Susan'},
         'body': 'The Avengers movie was so cool!' }]
     return render_template('index.html',title='Home', posts=posts)
 
 @app.route('/login',methods=['GET','POST'])
+
 
 def login():
     if current_user.is_authenticated:
@@ -42,9 +40,18 @@ def login():
     return render_template('login.html',title='Sign In', form=form)
 # for logging out user
 @app.route('/logout')
+
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/user/<username>')
+@login_required
+
+def user(username):
+    user=User.query.filter_by(username=username).first_or_404()
+    posts=[{'author':user,'body':'post #1'},{'author':user,'body':'post #2'}]
+    return render_template('user.html', user=user, posts=posts)
 
 @app.route('/register', methods=['GET','POST'])
 def register():
