@@ -4,11 +4,11 @@ from app.forms import LoginForm
 from flask_login import current_user, login_user,logout_user,login_required
 from app.models import User
 from app.forms import RegistrationForm
+from datetime import datetime
 
 @app.route("/")
 @app.route("/index")
 #@login_required
-
 def index():
     user={'username':'Daniel'}
     posts = [{
@@ -68,3 +68,10 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 #return redirect(url_for('index'))
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen=datetime.utcnow()
+        db.session.commit()
+
