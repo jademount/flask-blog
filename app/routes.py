@@ -50,7 +50,7 @@ def logout():
 
 def user(username):
     user=User.query.filter_by(username=username).first_or_404()
-    posts=[{'author':user,'body':'post #1'},{'author':user,'body':'post #2'}]
+    posts=[{'author':user,'body':'post No.1'},{'author':user,'body':'post No.2'}]
     return render_template('user.html', user=user, posts=posts)
 
 @app.route('/register', methods=['GET','POST'])
@@ -66,6 +66,5 @@ def register():
         flash('Congratulations, you are now a registered')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
-
 
 #return redirect(url_for('index'))
