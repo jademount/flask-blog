@@ -1,15 +1,17 @@
+git config --global user.email "xxx@xxx"
+git config --global user.name "xxx"
+
 git init
 git add *
 git commit -m "say something"
 
-first pull from github
-git remote add origin https://github.com/jademount/<project name>
-
 create a repository in github.com
 
-git remote add origin {git repository url}
+git remote add origin {git repository url,https url for username and password login, git@github.com:username/xx.git for ssh}
 
-if key in wrong url in previous step,correct it with:git remote set-url origin {git repository url}
+if key in wrong url in previous step,correct it with:git remote set-url origin {git repository url or git remote rm origin then reset it}
+
+git push --set-upstream origin master
 
 git push -u origin master
 
