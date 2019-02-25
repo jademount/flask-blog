@@ -11,11 +11,22 @@
 {% if user.last_seen %}
 <p>last seen on: {{user.last_seen}}</p>
 {% endif %}
-</td>
-</tr></table>
+
+<p>{{user.followers.count()}} followers, {{user.followed.count()}} following.</p>
+
 {% if user==current_user %}
 <p><a href="{{url_for("edit_profile")}}">Edit Your Profile</a></p>
-{% endif  %}
+
+{% elif not current_user.is_following(user) %}
+<p><a href="{{url_for("follow")}}">Follow</a></p>
+
+{% else %}
+<p><a href="{{url_for("unfollow")}}">Unfollow</a></p>
+
+{% endif %}
+</td>
+</tr></table>
+
 <hr>
 {% for post in posts %}
 
