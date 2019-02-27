@@ -53,7 +53,7 @@ def logout():
 
 def user(username):
     user=User.query.filter_by(username=username).first_or_404()
-    posts=current_user.followed_posts().all()
+    posts=user.followed_posts().all()
     return render_template('user.html', user=user, posts=posts)
 
 @app.route('/register', methods=['GET','POST'])
