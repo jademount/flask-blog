@@ -4,6 +4,7 @@ from app.forms import LoginForm,EditProfileForm
 from flask_login import current_user, login_user,logout_user,login_required
 from app.models import User,Post
 from app.forms import RegistrationForm,PostForm,ResetPasswordForm,ResetPasswordRequestForm
+from app.email import send_password_reset_email
 from datetime import datetime
 from werkzeug.urls import url_parse
 
@@ -164,7 +165,7 @@ def reset_password(token):
     if form.validate_on_submit():
         user.set_password(form.password.data)
         db.session.commit()
-        flash('Your password has been reset.')
+        flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
 
