@@ -38,7 +38,7 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
+            <div class="alert alert-info" role="alert">{{ message }},{{ g.locale }}</div>
             {% endfor %}
         {% endif %}
         {% endwith %}
@@ -51,6 +51,23 @@
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
+{% if g.locale=='zh_Hant_TW' or g.locale=='zh' %}
+{{ moment.locale('zh_TW') }}
+{% else %}
 {{ moment.locale(g.locale) }}
+{% endif %}
+
+<script>
+function translate(sourceElem,destElem,sourceLang,destLang){
+    $(destElem).html('<img src="{{ url_for('static',filename='loading.gif') }}">');
+    $.post('/translate',{ 
+        text:$(sourceElem).text(),source_language:sourceLang, dest_language:destLang}).done(function(response){ 
+         $(destElem).text(response['text'])
+        }).fail(function(){ 
+         $(destElem).text("{{_('Error, could not contact the server!')}}");
+        });
+}
+
+</script>
 {% endblock %}
 

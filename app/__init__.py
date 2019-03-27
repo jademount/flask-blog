@@ -36,7 +36,7 @@ if not app.debug:
 
 @babel.localeselector
 def get_locale():
-    #return request.accept_languages.best_match(app.config['LANGUAGES'])
-    return 'zh_TW'
+    return request.accept_languages.best_match(app.config.get('LANGUAGES'))
+    #return 'zh_TW'
 
 from app import routes,models,errors

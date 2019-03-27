@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-13 08:10+0800\n"
+"POT-Creation-Date: 2019-03-24 18:50+0800\n"
 "PO-Revision-Date: 2019-03-15 07:27+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: zh_Hant_TW\n"
-"Language-Team: zh_Hant_TW <LL@li.org>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -50,7 +50,7 @@ msgstr "電子郵件信箱"
 msgid "Repeat Password"
 msgstr "再輸入一次密碼"
 
-#: app/forms.py:20 app/routes.py:81 app/templates/register.html:5
+#: app/forms.py:20 app/routes.py:85 app/templates/register.html:5
 msgid "Register"
 msgstr "註冊"
 
@@ -60,7 +60,7 @@ msgstr "這個名稱已被使用了，選一個其他名稱吧"
 
 #: app/forms.py:30
 msgid "This email has been used, please enter another email"
-msgstr "這個已被使用了，個吧"
+msgstr "這個EMAIL已被使用了，換一個吧"
 
 #: app/forms.py:35
 msgid "Reset password request"
@@ -70,7 +70,7 @@ msgstr "申請重置密碼"
 msgid "Repeat password"
 msgstr "再輸入一次密碼"
 
-#: app/forms.py:41 app/routes.py:156
+#: app/forms.py:41 app/routes.py:161
 msgid "Reset password"
 msgstr "重設密碼"
 
@@ -78,97 +78,113 @@ msgstr "重設密碼"
 msgid "About me"
 msgstr "關於我"
 
-#: app/forms.py:47
-msgid "Log in"
-msgstr "登入"
-
-#: app/forms.py:53
-msgid "Please use a different username"
-msgstr "請使用其他名稱登入"
-
-#: app/forms.py:57
-msgid "Say something"
-msgstr "寫些什麼吧!"
-
-#: app/forms.py:58
+#: app/forms.py:47 app/forms.py:60
 msgid "Submit"
 msgstr "送出"
 
-#: app/routes.py:21
+#: app/forms.py:55
+msgid "Please use a different username"
+msgstr "請使用其他名稱登入"
+
+#: app/forms.py:59
+msgid "Say something"
+msgstr "寫些什麼吧!"
+
+#: app/routes.py:26
 msgid "Your post is now live!"
 msgstr "您的發文成功了!"
 
-#: app/routes.py:28 app/templates/base.html:20
+#: app/routes.py:32 app/templates/base.html:20
 msgid "Home"
 msgstr "首頁"
 
-#: app/routes.py:41
+#: app/routes.py:45
 msgid "Invalid username or password"
 msgstr "無效的使用者名稱或密碼"
 
-#: app/routes.py:49
+#: app/routes.py:53
 msgid "Sign In"
 msgstr "登入"
 
-#: app/routes.py:79
+#: app/routes.py:83
 msgid "Congratulations, you are now a registered"
 msgstr "恭喜註冊已完成"
 
-#: app/routes.py:99
+#: app/routes.py:104
 msgid "Your changes have been saved."
 msgstr "變更生效了!"
 
-#: app/routes.py:104 app/templates/edit_profile.html:6
+#: app/routes.py:109 app/templates/edit_profile.html:6
 msgid "Edit Profile"
 msgstr "修改自我介紹"
 
-#: app/routes.py:111 app/routes.py:126
+#: app/routes.py:116 app/routes.py:131
 #, python-format
 msgid "User %(username)s is not found"
 msgstr "找不到有%(username)s這位使用者"
 
-#: app/routes.py:114
+#: app/routes.py:119
 msgid "You cannot follow yourself"
 msgstr "沒辦法當自己的粉絲喔"
 
-#: app/routes.py:118
+#: app/routes.py:123
 #, python-format
 msgid "You are following user:%(username)s!"
 msgstr "您成為%(username)s的粉絲!"
 
-#: app/routes.py:129
+#: app/routes.py:134
 msgid "You cannot unfollow yourself"
 msgstr "沒法不當自己的粉絲喔"
 
-#: app/routes.py:133
+#: app/routes.py:138
 #, python-format
 msgid "You are unfollowing user:%(username)s."
 msgstr "您不再是%(username)s的粉絲了"
 
-#: app/routes.py:143 app/templates/base.html:21
+#: app/routes.py:148 app/templates/base.html:21
 msgid "Explore"
 msgstr "探索"
 
-#: app/routes.py:154
+#: app/routes.py:159
 msgid "Check you email for the instructions to reset password"
 msgstr "請依照電子郵件的指示來重設密碼"
 
-#: app/routes.py:169
+#: app/routes.py:174
 msgid "Your password has been reset."
 msgstr "您的密碼重設完成!"
+
+#: app/translate.py:8
+msgid "Error: the translation service is not configured."
+msgstr "翻譯功能尚未設定完成"
+
+#: app/translate.py:12
+msgid "Error: the translation service failed."
+msgstr "很抱歉暫時無翻譯服務"
 
 #: app/templates/404.html:4
 msgid "File Not Found"
 msgstr "沒找到檔案"
 
-#: app/templates/404.html:5
+#: app/templates/404.html:5 app/templates/500.html:6
 msgid "Back"
 msgstr "上一頁"
 
-#: app/templates/_post.html:11
+#: app/templates/500.html:4
+msgid "An unexpected error has occurred"
+msgstr "發生一個意外的錯誤"
+
+#: app/templates/500.html:5
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "系統管理員正在處理中，很抱歉造成您的不便!"
+
+#: app/templates/_post.html:15
 #, python-format
 msgid "%(username)s said %(when)s"
-msgstr "%(username)s!在%(when)s說"
+msgstr "%(username)s在%(when)s說"
+
+#: app/templates/_post.html:20
+msgid "Translate"
+msgstr "翻譯"
 
 #: app/templates/base.html:4
 msgid "Welcome to Microblog"
@@ -185,6 +201,10 @@ msgstr "個人檔案"
 #: app/templates/base.html:28
 msgid "Logout"
 msgstr "登出"
+
+#: app/templates/base.html:65
+msgid "Error, could not contact the server!"
+msgstr "很抱歉暫時無法連接翻譯伺服器"
 
 #: app/templates/index.html:5
 #, python-format
@@ -252,4 +272,7 @@ msgstr "成為粉絲"
 #: app/templates/user.html:26
 msgid "Unfollow"
 msgstr "不當粉絲了"
+
+#~ msgid "Log in"
+#~ msgstr "登入"
 
